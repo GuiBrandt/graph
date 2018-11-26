@@ -1,0 +1,3 @@
+[submodule "sparse_matrix"]
+	path = sparse_matrix
+	url = https://github.com/GuiBrandt/sparse_matrix
