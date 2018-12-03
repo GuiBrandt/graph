@@ -17,13 +17,14 @@
  * @brief Classe de grafo genérico direcionado
  * 
  * @tparam T 
- * @tparam Weight Tipo de peso das arestas (padrão = int) 
+ * @tparam Weight Tipo de peso das arestas (padrão = double) 
  */
 template <
     class T,
-    class Weight = int
+    class Weight = double
 > class graph {
 private:
+
     size_t _node_id = 0;
 
     //! Hash map usado para traduzir os nós em números
@@ -40,14 +41,14 @@ public:
     /**
      * @brief Construtor
      */
-    graph() {}
+    graph() : _edges(INFINITY) {}
 
     /**
      * @brief Construtor de cópia
      * 
      * @param other Grafo a ser copiado
      */
-    graph(const graph& other) {
+    graph(const graph& other) : _edges(INFINITY) {
         *this = other;
     }
 
