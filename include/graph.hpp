@@ -138,7 +138,7 @@ public:
             auto edges = _edges[it->second];
 
             for (auto it2 = edges.begin(); it2 != edges.end(); it2++)
-                file << "node" << it->second << " -> node" << it2->first << " [label=" << it2->second << "]" << std::endl;
+                file << "node" << it->second << " -> node" << it2->first << " [label=" << it2->second << " len=" << it2->second << "]" << std::endl;
         }
 
         file << "}" << std::endl;
