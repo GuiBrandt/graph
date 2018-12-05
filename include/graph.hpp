@@ -74,7 +74,7 @@ public:
      * @param value Valor do nó
      */
     void add_node(const T& value) {
-        if (_nodes.includes(value))
+        if (_nodes.find(value) != _nodes.end())
             throw "Nó repetido";
 
         _nodes[value] = _node_id++;
@@ -86,11 +86,11 @@ public:
      * @param value Valor do nó
      */
     void remove_node(const T& value) {
-        if (!_nodes.includes(value))
+        if (_nodes.find(value) == _nodes.end())
             throw "Nó não existe";
 
         int node_id = _nodes[value];
-        _nodes.remove(value);
+        _nodes.erase(value);
 
         // Remove arestas ligadas ao nó
         _edges.clear_row(node_id);
@@ -105,7 +105,7 @@ public:
      * @param w Peso da aresta
      */
     void add_edge(const T& src, const T& dest, Weight w) {
-        if (!_nodes.includes(src) || !_nodes.includes(dest))
+        if (_nodes.find(src) == _nodes.end() || _nodes.find(dest) == _nodes.end())
             throw "Aresta entre nós inexistentes";
 
         _edges[_nodes[src]][_nodes[dest]] = w;
@@ -118,7 +118,7 @@ public:
      * @param dest 
      */
     void remove_edge(const T& src, const T& dest) {
-        if (!_nodes.includes(src) || !_nodes.includes(dest))
+        if (_nodes.find(src) == _nodes.end() || _nodes.find(dest) == _nodes.end())
             throw "Aresta entre nós inexistentes";
 
         _edges[_nodes[src]][_nodes[dest]] = INFINITY;
